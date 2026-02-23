@@ -8,9 +8,8 @@ Everything you can do in SvelteKit, you can do in SveltronKit; meaning that you 
 libraries like [Shadcn-Svelte](https://next.shadcn-svelte.com/).
 
 > [!IMPORTANT]
-> This template uses SvelteKit's [hash router](https://svelte.dev/docs/kit/configuration#router) to
-> create a single-page app. The only difference you'll have to look out for is to start all your routed
-> links with `#/` instead of `/`.
+> This template uses `prerender` to generate the static pages and uses `trailingSlash` to make file
+> resolution work. You'll need to use `resolve` in your code when navigating routes.
 
 ## Dependencies & Frameworks
 
@@ -25,11 +24,6 @@ libraries like [Shadcn-Svelte](https://next.shadcn-svelte.com/).
 > it easily if you don't want it.
 
 ## Getting Started
-
-> [!WARNING]
-> This project uses [`pnpm`](https://pnpm.io/) and uses [patching](https://pnpm.io/cli/patch) to work
-> around some issues with SvelteKit. When this [PR](https://github.com/sveltejs/kit/pull/13812) merges,
-> you can remove the patching and use the latest version of SvelteKit.
 
 Start by installing the dependencies:
 
