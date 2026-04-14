@@ -1,6 +1,16 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from "@playwright/test";
+import { _electron as electron } from "playwright";
 
-test('home page has expected h1', async ({ page }) => {
-	await page.goto('/');
-	await expect(page.locator('h1')).toBeVisible();
+test("electron app renders and navigates", async () => {
+  const electronApp = await electron.launch({ args: [".vite/build/main.js"] });
+  const page = await electronApp.firstWindow();
+
+  try {
+    await expect(page.getByRole("heading", { name: "Welcome to SvelteKit" })).toBeVisible();
+
+    await page.getByRole("link", { name: "Go to the second route" }).click();
+    await expect(page.getByRole("heading", { name: "Second Route" })).toBeVisible();
+  } finally {
+    await electronApp.close();
+  }
 });
