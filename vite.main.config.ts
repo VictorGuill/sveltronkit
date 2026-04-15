@@ -4,7 +4,6 @@ import { builtinModules } from "node:module";
 const external = [
   "electron",
   "electron/main",
-  "electron-squirrel-startup",
   ...builtinModules,
   ...builtinModules.map((moduleName) => `node:${moduleName}`),
 ];
